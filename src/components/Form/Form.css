@@ -1,5 +1,5 @@
 body{
-    background-color: whitesmoke;
+    background-color: white;
 }
 .main-form-container{
     display: flex;
@@ -9,41 +9,76 @@ body{
 }
 hr{
     width: 100%;
+    border: none;
+    height: 3px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 101, 204, 0.75), rgba(0, 0, 0, 0));
 }
-.header-div{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
 .titulo-seccion{
     text-align: center;
     font-size: 30px;
     font-weight: 700;
+    background-color: #0065CC;
+    padding: 1rem;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
 }
 
+.row-header{
+    padding: 1rem;
+    font-size: 18px;
+    font-weight: 700;
+    width: 15%;
+}
 .generales-div{
+    width: 85%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 18px;
+    margin: auto 0;
 }
 
 .solicitud-div{
+    width: 85%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    margin: auto 0;
+    font-size: 18px;
 }
 
-.solicitud-div{
-    font-size: 18px;
+.solicitud-div select{
+    padding: 5px;
+    font-size: 14px;
 }
 
 .tiempo-div{
+    width: 85%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 18px;
+    margin: auto 0;
+}
+
+.tiempo-div select{
+    padding: 5px;
+    font-size: 14px;
+}
+
+.temporal{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.permanente{
+    display: none;
 }
 
 .row-item{
@@ -53,55 +88,59 @@ hr{
 
 .apps-div{
     font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    margin: auto 0;
+    width: 100%;
 }
-.apps-item{
-    margin-left: 10%;
+.apps-list{
+    width: 30%;
 }
 .case{
-    margin-left: 10%;
+    margin-top: 0;
+}
+.apps-div-casos{
+    width:70%;
+}
+.apps-item{
+    margin-bottom: 10px;
 }
 .req-div{
-    margin-left: 15%;
+    margin-left: 10%;
 }
 .req-div div{
     margin-bottom: 10px;
 }
 
 .usuarios-div{
+    width: 100%;
     font-size: 18px;
+    margin: auto 0 ;
+    display: flex;
+    flex-direction: column ;
 }
 .usuarios-div div{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
     margin-bottom: 10px;
 }
 
 .auth-div{
-    margin-left: 10%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     font-size: 18px;
+    margin: auto 0;
 }
 
-.auth-div label{
-    margin-bottom: 10px;
-}
 button{
     width: 20%;
     margin: 1rem auto;
     padding: 10px;
-    background-color: green;
+    background-color: #0065CC;
     color: whitesmoke;
     font-weight: 700;
     border-radius: 10px;
 }
 button:focus{
     outline: none;
-}
-
-.row-header{
-    padding: 1rem;
-    font-size: 18px;
-    font-weight: 700;
 }

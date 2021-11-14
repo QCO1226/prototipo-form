@@ -8,6 +8,7 @@ const Form = () =>{
     const [fecha, setFecha] = useState(new Date());
     const [fechadesde, setFechaDesde] = useState(new Date());
     const [fechahasta, setFechaHasta] = useState(new Date());
+    const [tiempo, setTiempo] = useState('permanente');
 
     const onChangeCheckbox = (position) => {
         const updatedCheckedState = checkedState.map((item, index) =>
@@ -26,72 +27,80 @@ const Form = () =>{
     const onChangeFechaHasta = (e) =>{
         setFechaHasta(e.target.value);
     }
+    const onChangeTiempo = (e) =>{
+        setTiempo(e.target.value);
+    }
 
     return(
     <div className="main-form-container">
-        <div className="header-div">
-          <p>Logo</p>
-          <p>Departamento Equipo Alpha</p>
-          <p>Versión x</p>
+        <p className="titulo-seccion">Formulario: Solicitud de cosas varias</p>
+        <div className="row">
+            <p className="row-header">Generales</p>
+
+            <div className="generales-div">
+                <div className="row-item">
+                    <label>Fecha: <input type="date" value={fecha} onChange={onChangeFecha} /> </label>
+                </div>
+                <div className="row-item">
+                    <label> Nombre:  <input type="text" /> </label>
+                </div>
+                <div className="row-item">
+                        <label> Jefe: <input type="text" /> </label>
+                </div>
+            </div>
+
         </div>
         <hr />
-        <p className="titulo-seccion">Solicitud de cosas varias</p>
+        <div className="row">
+            <p className="row-header">Solicitud</p>
+            <div className="solicitud-div">
+                <div>
+                <select>
+                    <option value="Crear">Crear</option>
+                    <option value="Eliminar">Eliminar</option>
+                </select>
+                </div>
+            </div>
+        </div>
+        <div className="row">
+            <p className="row-header">Tiempo</p>
+            <div className="tiempo-div">
+                <select onChange={onChangeTiempo}> 
+                    <option value="permanente">Permanente</option>
+                    <option value="temporal">Temporal</option>
+                </select>
+                <div className={tiempo}>
+                    <label for="desde">Desde:   
+                    <input type="date" id="desde" value={fechadesde} onChange={onChangeFechaDesde} / >
+                    </label>
+                    <label for="hasta">Hasta:   
+                    <input type="date" id="hasta" value={fechahasta} onChange={onChangeFechaHasta} / >
+                    </label>
+                </div>
+            </div>
+        </div>
         <hr />
-        <p className="row-header">Generales</p>
-        <div className="generales-div">
-          <div className="row-item">
-               <label>Fecha: <input type="date" value={fecha} onChange={onChangeFecha} /> </label>
-          </div>
-          <div className="row-item">
-               <label> Nombre:  <input type="text" /> </label>
-          </div>
-          <div className="row-item">
-                <label> Jefe: <input type="text" /> </label>
-          </div>
-        </div>
-        <p className="row-header">Solicitud</p>
-        <div className="solicitud-div">
-            <div>
-            <input type="radio" id="crear" name="solicitud" value="crear" / >
-            <label for="crear">Crear</label>
-            </div>
-            <div>
-            <input type="radio" id="eliminar" name="solicitud" value="eliminar" / >
-            <label for="eliminar">Eliminar</label>
-            </div>
-        </div>
-        <p className="row-header">Tiempo</p>
-        <div className="tiempo-div">
-            <div>
-            <label for="permanente">Permanente</label>
-            <input type="checkbox" id="permanente" name="permanente" value="permanente" / >
-            </div>
-            <div>
-            <label for="desde">Desde:   </label>
-            <input type="date" id="desde" value={fechadesde} onChange={onChangeFechaDesde} / >
-            </div>
-            <div>
-            <label for="hasta">Hasta:   </label>
-            <input type="date" id="hasta" value={fechahasta} onChange={onChangeFechaHasta} / >
-            </div>
-        </div>
+        <div className="row">
         <p className="row-header">Apps</p>
         <div className="apps-div">
+            <div className="apps-list">
             {
                 apps.map(({name}, index) =>{
                     return(
                         <div className="apps-item">
-                            <label for={'checkbox-app-'+index}>{name}</label>
                             <input 
                                 type="checkbox" id={'checkbox-app-'+index} 
                                 name={name} 
                                 value={name} 
                                 onChange={() => onChangeCheckbox(index)} 
                                 />
+                            <label for={'checkbox-app-'+index}>{name}</label>
                         </div>
                     )
                 })
             }
+            </div>
+            <div className="apps-div-casos">
             <p className="case">Caso 1</p>
             <div className="req-div">
                 <div>
@@ -143,22 +152,31 @@ const Form = () =>{
                     <input type="text" id="req-3-3" />
                 </div>
             </div>
-        </div>
-        <p className="row-header">Usuarios</p>
-        <div className="usuarios-div">
-            <div>
-                <label>Nombre: <input type="text" /></label>
-                <label>Motivo: <input type="text" /></label>
-            </div>
-            <div>
-                <label>Nombre: <input type="text" /></label>
-                <label>Motivo: <input type="text" /></label>
             </div>
         </div>
-        <p className="row-header">Autorización</p>
-        <div className="auth-div">
-            <label>Solicitado por: <input type="text" /></label>
-            <label>Aprobado por: <input type="text" /></label>
+            
+        </div>
+        <hr />
+        <div className="row">
+            <p className="row-header">Usuarios</p>
+            <div className="usuarios-div">
+                <div>
+                    <label>Nombre: <input type="text" /> </label>
+                    <label>Motivo: <input type="text" /> </label>
+                </div>
+                <div>
+                    <label>Nombre: <input type="text" /> </label>
+                    <label>Motivo: <input type="text" /> </label>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div className="row">
+            <p className="row-header">Autorización</p>
+            <div className="auth-div">
+                <label>Solicitado por: <input type="text" /></label>
+                <label>Aprobado por: <input type="text" /></label>
+            </div>
         </div>
         <button>GENERAR</button>
     </div>
