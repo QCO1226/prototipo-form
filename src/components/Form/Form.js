@@ -33,7 +33,10 @@ const Form = () =>{
 
     return(
     <div className="main-form-container">
-        <p className="titulo-seccion">Formulario: Solicitud de cosas varias</p>
+        <div className="header">
+            <img src="https://dummyimage.com/260x57/949494/ffffff.jpg&text=logo" />
+            <p className="titulo-seccion">Formulario: Solicitud de cosas varias</p>
+        </div>
         <div className="row">
             <p className="row-header">Generales</p>
 

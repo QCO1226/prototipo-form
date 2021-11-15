@@ -18,9 +18,18 @@ hr{
     font-size: 30px;
     font-weight: 700;
     background-color: #0065CC;
-    padding: 1rem;
+    padding: .8rem;
     color: whitesmoke;
-    border-radius: 5px;
+    width: 100%;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+}
+
+.header img{
+    width: 40%;
+    margin: auto 0;
 }
 .row{
     display: flex;
