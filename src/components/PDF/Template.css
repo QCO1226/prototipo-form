@@ -1,0 +1,61 @@
+
+table{
+    border: solid 1px black;
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+    font-size: 16px;
+}
+th{
+    text-align: center;
+    padding: 1rem;
+    margin: auto;
+    border: solid 1px black;
+    font-size: 20px;
+
+}
+td{
+    text-align: left;
+    padding: 1rem;
+    margin: auto;
+    border: solid 1px black;
+}
+
+td li{
+    list-style-type: none;
+}
+h1{
+    margin: auto;
+}
+.header-col{
+    width: 18%;
+}
+.second-col{
+    width: 25% ;
+}
+.third-col{
+    width: 25%;
+}
+.fourth-col{
+    width: 25%;
+}
+
+.header-tabla{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 0 auto;
+}
+.header-tabla img{
+    width: 250px;
+}
+
+.auth-display{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.solicitud-row td{
+    text-align: center;
+}

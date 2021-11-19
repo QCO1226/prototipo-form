@@ -1,35 +1,9 @@
 import './Form.css';
 import {apps} from '../../utils/apps';
 import {useState} from 'react';
+import {Link} from 'react-router-dom';
 
-const Form = () =>{
-
-    const [checkedState, setCheckedState] = useState(new Array(apps.length).fill(false));
-    const [fecha, setFecha] = useState(new Date());
-    const [fechadesde, setFechaDesde] = useState(new Date());
-    const [fechahasta, setFechaHasta] = useState(new Date());
-    const [tiempo, setTiempo] = useState('permanente');
-
-    const onChangeCheckbox = (position) => {
-        const updatedCheckedState = checkedState.map((item, index) =>
-          index === position ? !item : item
-        );
-    
-        setCheckedState(updatedCheckedState);
-    }
-
-    const onChangeFecha = (e) =>{
-        setFecha(e.target.value);
-    }
-    const onChangeFechaDesde = (e) =>{
-        setFechaDesde(e.target.value);
-    }
-    const onChangeFechaHasta = (e) =>{
-        setFechaHasta(e.target.value);
-    }
-    const onChangeTiempo = (e) =>{
-        setTiempo(e.target.value);
-    }
+const Form = props =>{
 
     return(
     <div className="main-form-container">
@@ -42,13 +16,13 @@ const Form = () =>{
 
             <div className="generales-div">
                 <div className="row-item">
-                    <label>Fecha: <input type="date" value={fecha} onChange={onChangeFecha} /> </label>
+                    <label>Fecha: <input type="date" value={props.fecha} onChange={props.onChangeFecha} /> </label>
                 </div>
                 <div className="row-item">
-                    <label> Nombre:  <input type="text" /> </label>
+                    <label> <span class="required">*</span> Nombre:  <input type="text" onChange={props.onChangeGeneralesNombre} /> </label>
                 </div>
                 <div className="row-item">
-                        <label> Jefe: <input type="text" /> </label>
+                        <label> <span class="required">*</span> Jefe: <input type="text" onChange={props.onChangeGeneralesJefe} /> </label>
                 </div>
             </div>
 
@@ -58,7 +32,7 @@ const Form = () =>{
             <p className="row-header">Solicitud</p>
             <div className="solicitud-div">
                 <div>
-                <select>
+                <select onChange={props.onChangeSolicitud}>
                     <option value="Crear">Crear</option>
                     <option value="Eliminar">Eliminar</option>
                 </select>
@@ -68,16 +42,16 @@ const Form = () =>{
         <div className="row">
             <p className="row-header">Tiempo</p>
             <div className="tiempo-div">
-                <select onChange={onChangeTiempo}> 
-                    <option value="permanente">Permanente</option>
-                    <option value="temporal">Temporal</option>
+                <select onChange={props.onChangeTiempo}> 
+                    <option value="Permanente">Permanente</option>
+                    <option value="Temporal">Temporal</option>
                 </select>
-                <div className={tiempo}>
+                <div className={props.tiempo}>
                     <label for="desde">Desde:   
-                    <input type="date" id="desde" value={fechadesde} onChange={onChangeFechaDesde} / >
+                    <input type="date" id="desde" value={props.fechadesde} onChange={props.onChangeFechaDesde} / >
                     </label>
                     <label for="hasta">Hasta:   
-                    <input type="date" id="hasta" value={fechahasta} onChange={onChangeFechaHasta} / >
+                    <input type="date" id="hasta" value={props.fechahasta} onChange={props.onChangeFechaHasta} / >
                     </label>
                 </div>
             </div>
@@ -95,7 +69,7 @@ const Form = () =>{
                                 type="checkbox" id={'checkbox-app-'+index} 
                                 name={name} 
                                 value={name} 
-                                onChange={() => onChangeCheckbox(index)} 
+                                onChange={() => props.onChangeCheckbox(index)} 
                                 />
                             <label for={'checkbox-app-'+index}>{name}</label>
                         </div>
@@ -107,52 +81,52 @@ const Form = () =>{
             <p className="case">Caso 1</p>
             <div className="req-div">
                 <div>
-                    <label for="req-1-1">Req 1: </label>
-                    <input type="text" id="req-1-1" />
+                    <label for="req11">Req 1: </label>
+                    <input type="text" id="req11" name="req11" onChange={props.onChangeReq}/>
                 </div>
 
                 <div>
-                    <label for="req-1-2">Req 2: </label>
-                    <input type="text" id="req-1-2" />
+                    <label for="req12">Req 2: </label>
+                    <input type="text" id="req12" name="req12" onChange={props.onChangeReq} />
                 </div>
 
                 <div>
-                    <label for="req-1-3">Req 3: </label>
-                    <input type="text" id="req-1-3" />
+                    <label for="req13">Req 3: </label>
+                    <input type="text" id="req13" name="req13" onChange={props.onChangeReq} />
                 </div>
             </div>
             <p className="case">Caso 2</p>
             <div className="req-div">
                 <div>
-                    <label for="req-2-1">Req 1: </label>
-                    <input type="text" id="req-2-1" />
+                    <label for="req21">Req 1: </label>
+                    <input type="text" id="req21" name="req21" onChange={props.onChangeReq} />
                 </div>
 
                 <div>
-                    <label for="req-2-2">Req 2: </label>
-                    <input type="text" id="req-2-2" />
+                    <label for="req22">Req 2: </label>
+                    <input type="text" id="req22" name="req22" onChange={props.onChangeReq} />
                 </div>
 
                 <div>
-                    <label for="req-2-3">Req 3: </label>
-                    <input type="text" id="req-2-3" />
+                    <label for="req23">Req 3: </label>
+                    <input type="text" id="req23" name="req23" onChange={props.onChangeReq} />
                 </div>
             </div>
             <p className="case">Caso 3</p>
             <div className="req-div">
                 <div>
-                    <label for="req-3-1">Req 1: </label>
-                    <input type="text" id="req-3-1" />
+                    <label for="req31">Req 1: </label>
+                    <input type="text" id="req31" name="req31" onChange={props.onChangeReq} />
                 </div>
 
                 <div>
-                    <label for="req-3-2">Req 2: </label>
-                    <input type="text" id="req-3-2" />
+                    <label for="req32">Req 2: </label>
+                    <input type="text" id="req32" name="req32" onChange={props.onChangeReq} />
                 </div>
 
                 <div>
-                    <label for="req-3-3">Req 3: </label>
-                    <input type="text" id="req-3-3" />
+                    <label for="req33">Req 3: </label>
+                    <input type="text" id="req33" name="req33" onChange={props.onChangeReq} />
                 </div>
             </div>
             </div>
@@ -164,12 +138,12 @@ const Form = () =>{
             <p className="row-header">Usuarios</p>
             <div className="usuarios-div">
                 <div>
-                    <label>Nombre: <input type="text" /> </label>
-                    <label>Motivo: <input type="text" /> </label>
+                    <label> <span class="required">*</span> Nombre: <input type="text" id="username1" name="username1" onChange={props.onChangeUsuarios} /> </label>
+                    <label><span class="required">*</span> Motivo: <input type="text" id="motivo1" name="motivo1" onChange={props.onChangeUsuarios} /> </label>
                 </div>
                 <div>
-                    <label>Nombre: <input type="text" /> </label>
-                    <label>Motivo: <input type="text" /> </label>
+                    <label><span class="required">*</span> Nombre: <input type="text" id="username2" name="username2" onChange={props.onChangeUsuarios}  /> </label>
+                    <label><span class="required">*</span> Motivo: <input type="text" id="motivo2" name="motivo2" onChange={props.onChangeUsuarios} /> </label>
                 </div>
             </div>
         </div>
@@ -177,11 +151,20 @@ const Form = () =>{
         <div className="row">
             <p className="row-header">Autorización</p>
             <div className="auth-div">
-                <label>Solicitado por: <input type="text" /></label>
-                <label>Aprobado por: <input type="text" /></label>
+                <label><span class="required">*</span> Solicitado por: <input type="text" name="solicitante" onChange={props.onChangeSolicitante} /></label>
+                <label><span class="required">*</span> Aprobado por: <input type="text" name="aprobador" onChange={props.onChangeAprobador} /></label>
             </div>
         </div>
-        <button>GENERAR</button>
+        {
+            props.isEmpty ?(
+                <p className="error-message">(*) Debe llenar todos los campos obligatorios</p>
+            ):(
+
+            <Link className="boton" to='/print'
+
+            >GENERAR</Link>
+            )
+        }
     </div>
     )
 }

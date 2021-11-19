@@ -15,10 +15,10 @@ hr{
 }
 .titulo-seccion{
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     background-color: #0065CC;
-    padding: .8rem;
+    padding: .9rem;
     color: whitesmoke;
     width: 100%;
 }
@@ -79,14 +79,14 @@ hr{
     font-size: 14px;
 }
 
-.temporal{
+.Temporal{
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-.permanente{
+.Permanente{
     display: none;
 }
 
@@ -141,15 +141,20 @@ hr{
     margin: auto 0;
 }
 
-button{
-    width: 20%;
+.boton{
     margin: 1rem auto;
-    padding: 10px;
+    padding: 20px;
     background-color: #0065CC;
     color: whitesmoke;
     font-weight: 700;
     border-radius: 10px;
+    text-decoration: none;
 }
-button:focus{
-    outline: none;
+.error-message{
+    color: darkred;
+    text-align: center;
+}
+
+.required{
+    color: darkred;
 }
